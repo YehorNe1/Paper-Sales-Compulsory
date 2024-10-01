@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/yehornechai/Desktop/Paper-Sales-Compulsory/server/server.csproj": {}
+    "/Users/yehornechai/Desktop/repository /Paper-Sales-Compulsory/server/server.csproj": {}
   },
   "projects": {
-    "/Users/yehornechai/Desktop/Paper-Sales-Compulsory/server/server.csproj": {
+    "/Users/yehornechai/Desktop/repository /Paper-Sales-Compulsory/server/server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/yehornechai/Desktop/Paper-Sales-Compulsory/server/server.csproj",
+        "projectUniqueName": "/Users/yehornechai/Desktop/repository /Paper-Sales-Compulsory/server/server.csproj",
         "projectName": "server",
-        "projectPath": "/Users/yehornechai/Desktop/Paper-Sales-Compulsory/server/server.csproj",
+        "projectPath": "/Users/yehornechai/Desktop/repository /Paper-Sales-Compulsory/server/server.csproj",
         "packagesPath": "/Users/yehornechai/.nuget/packages/",
-        "outputPath": "/Users/yehornechai/Desktop/Paper-Sales-Compulsory/server/obj/",
+        "outputPath": "/Users/yehornechai/Desktop/repository /Paper-Sales-Compulsory/server/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/yehornechai/.nuget/NuGet/NuGet.Config"
@@ -48,6 +48,12 @@
               "version": "[8.0.8, )"
             },
             "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.8, )"
             },
