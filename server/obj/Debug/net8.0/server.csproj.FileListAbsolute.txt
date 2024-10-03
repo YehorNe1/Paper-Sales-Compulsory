@@ -104,3 +104,4 @@
 /Users/yehornechai/Desktop/repository /Paper-Sales-Compulsory/server/obj/Debug/net8.0/server.pdb
 /Users/yehornechai/Desktop/repository /Paper-Sales-Compulsory/server/obj/Debug/net8.0/server.genruntimeconfig.cache
 /Users/yehornechai/Desktop/repository /Paper-Sales-Compulsory/server/obj/Debug/net8.0/ref/server.dll
+/Users/yehornechai/Desktop/repository /Paper-Sales-Compulsory/server/bin/Debug/net8.0/System.Linq.Dynamic.Core.dll

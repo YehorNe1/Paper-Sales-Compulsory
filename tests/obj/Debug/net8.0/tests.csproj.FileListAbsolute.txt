@@ -432,3 +432,4 @@
 /Users/yehornechai/Desktop/repository /Paper-Sales-Compulsory/tests/obj/Debug/net8.0/tests.pdb
 /Users/yehornechai/Desktop/repository /Paper-Sales-Compulsory/tests/obj/Debug/net8.0/tests.genruntimeconfig.cache
 /Users/yehornechai/Desktop/repository /Paper-Sales-Compulsory/tests/obj/Debug/net8.0/ref/tests.dll
+/Users/yehornechai/Desktop/repository /Paper-Sales-Compulsory/tests/bin/Debug/net8.0/System.Linq.Dynamic.Core.dll
