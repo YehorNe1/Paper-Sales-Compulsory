@@ -1,14 +1,13 @@
-import {Api, Customer} from "../../Api.ts";
+import {Customer} from "../../Api.ts";
 import {useEffect, useState} from "react";
-const TestEnv = () => {
+import {apiClient} from "../apiClient.ts";
+const CustomersView = () => {
 
     const [customers, setCustomers] = useState<Customer[]>([]);
 
-    const MyApi = new Api({ baseURL: "http://localhost:5062" });
-
     async function sendMyRequest() {
         try {
-            const response = await MyApi.api.customerList();
+            const response = await apiClient.api.customerList();
             setCustomers(response.data); // set the customers state with fetched data
         } catch (error) {
             console.error("Error fetching customers:", error);
@@ -44,4 +43,4 @@ const TestEnv = () => {
 }
 
 
-export default TestEnv;
+export default CustomersView;
