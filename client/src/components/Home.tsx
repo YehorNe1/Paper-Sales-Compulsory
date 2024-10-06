@@ -1,22 +1,27 @@
-import Navigation from "./Navigation.tsx";
-import '../index.css'
-import '../App.css'
+
+import '../App.css';
+//import logo from '../assets/logo.png';
 
 const Home = () => {
     return (
-        <>
-            <Navigation></Navigation>
-
-            <a href="/Home">Home</a>
-            <br/>
-            <a href="/customers">Customers</a>
-            <br/>
-
-            <a href="/admin">Admin Page</a>
-
-
-        </>
-    )
-}
+        <div className="home-container">
+            <div className="home-overlay">
+                <div className="home-content">
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <h1>Dunder Mifflin</h1>
+                    <p>Paper Company: Supplying
+                        Quality Paper Products for All Your Needs</p>
+                </div>
+            </div>
+        </div>
+    );
+};
 
 export default Home;

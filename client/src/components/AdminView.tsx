@@ -1,9 +1,12 @@
-const AdminView = () => {
-    return (
-        <>
-            This is Admin View
-        </>
-    )
-}
+import '../index.css';
+import '../App.css';
 
-export default AdminView;
+const Admin = () => {
+    return (
+        <div className="page-container">
+            <h1>Admin Page</h1>
+        </div>
+    );
+};
+
+export default Admin;
