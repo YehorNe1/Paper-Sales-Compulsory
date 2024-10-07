@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "hk5cOKSefCs=",
+  "dgSpecHash": "Kong7vvujSo=",
   "success": true,
   "projectFilePath": "/Users/yehornechai/Desktop/Paper-Sales-Compulsory-server_part2/server/server.csproj",
   "expectedPackageFiles": [
+    "/Users/yehornechai/.nuget/packages/automapper/13.0.1/automapper.13.0.1.nupkg.sha512",
     "/Users/yehornechai/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/yehornechai/.nuget/packages/microsoft.aspnetcore.openapi/8.0.8/microsoft.aspnetcore.openapi.8.0.8.nupkg.sha512",
     "/Users/yehornechai/.nuget/packages/microsoft.bcl.asyncinterfaces/6.0.0/microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",

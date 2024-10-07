@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace server.Models
 {
@@ -9,7 +10,6 @@ namespace server.Models
         [Required(ErrorMessage = "Name is required")]
         [StringLength(255, ErrorMessage = "Name cannot exceed 255 characters")]
         public string PropertyName { get; set; } = null!;
-
         public virtual ICollection<Paper> Papers { get; set; } = new List<Paper>();
     }
 }

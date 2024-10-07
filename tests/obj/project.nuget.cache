@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "2e5BPzQCMqo=",
+  "dgSpecHash": "4WvfzcBhGFI=",
   "success": true,
   "projectFilePath": "/Users/yehornechai/Desktop/Paper-Sales-Compulsory-server_part2/tests/tests.csproj",
   "expectedPackageFiles": [
+    "/Users/yehornechai/.nuget/packages/automapper/13.0.1/automapper.13.0.1.nupkg.sha512",
     "/Users/yehornechai/.nuget/packages/castle.core/5.1.1/castle.core.5.1.1.nupkg.sha512",
     "/Users/yehornechai/.nuget/packages/coverlet.collector/6.0.0/coverlet.collector.6.0.0.nupkg.sha512",
     "/Users/yehornechai/.nuget/packages/microsoft.aspnetcore.antiforgery/2.2.0/microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",

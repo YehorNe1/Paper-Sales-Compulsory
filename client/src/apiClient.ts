@@ -1,8 +1,11 @@
-import {Api} from '../Api.ts';
+// src/apiClient.ts
 
-export const apiClient = new Api({
-    baseURL: "http://localhost:5062",
+import { ApiClient } from '../Api.ts'; // Adjust the path as necessary
+
+export const apiClient = new ApiClient({
+    baseURL: 'https://localhost:7215/api',
     headers: {
-        "Prefer": "return=representation"
-    }
+        'Content-Type': 'application/json',
+    },
 });
+

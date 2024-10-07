@@ -212,3 +212,4 @@
 /Users/yehornechai/Desktop/Paper-Sales-Compulsory-server_part2/server/obj/Debug/net8.0/server.pdb
 /Users/yehornechai/Desktop/Paper-Sales-Compulsory-server_part2/server/obj/Debug/net8.0/server.genruntimeconfig.cache
 /Users/yehornechai/Desktop/Paper-Sales-Compulsory-server_part2/server/obj/Debug/net8.0/ref/server.dll
+/Users/yehornechai/Desktop/Paper-Sales-Compulsory-server_part2/server/bin/Debug/net8.0/AutoMapper.dll

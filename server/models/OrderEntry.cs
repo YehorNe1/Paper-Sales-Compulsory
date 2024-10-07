@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace server.Models
 {
@@ -15,8 +16,8 @@ namespace server.Models
         [Required(ErrorMessage = "Please enter the order ID")]
         public int OrderId { get; set; }
 
+        [JsonIgnore]
         public virtual Order Order { get; set; } = null!;
-
         public virtual Paper Product { get; set; } = null!;
     }
 }
