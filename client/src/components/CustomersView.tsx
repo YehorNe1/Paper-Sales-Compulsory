@@ -2,24 +2,38 @@
 
 import React, { useEffect, useState, useCallback } from 'react';
 import { apiClient } from '../apiClient';
-import { PaperDTO, OrderDTO, OrderEntryDTO } from '../../Api';
+import { PaperDTO, OrderDTO, OrderEntryDTO, PropertyDTO } from '../../Api';
 
 const CustomersView: React.FC = () => {
     const [products, setProducts] = useState<PaperDTO[]>([]);
     const [search, setSearch] = useState('');
+    const [sortBy, setSortBy] = useState<string>(''); // State for sorting
+    const [ascending, setAscending] = useState<boolean>(true); // State for sort direction
+    const [propertyId, setPropertyId] = useState<number | undefined>(undefined); // State for filtering
+    const [properties, setProperties] = useState<PropertyDTO[]>([]); // State for available properties
     const [orderEntries, setOrderEntries] = useState<OrderEntryDTO[]>([]);
-    const customerId = 1; // Replace with actual customer ID or authentication logic
+    const customerId = 2; // Replace with actual customer ID or authentication logic
     const [orders, setOrders] = useState<OrderDTO[]>([]);
 
-    // Fetch products with optional search
+    // Fetch available properties for filtering
+    const fetchProperties = useCallback(async () => {
+        try {
+            const response = await apiClient.getAllProperties();
+            setProperties(response.data);
+        } catch (error) {
+            console.error('Error fetching properties:', error);
+        }
+    }, []);
+
+    // Fetch products with search, sort, and filter
     const fetchProducts = useCallback(async () => {
         try {
-            const response = await apiClient.getProducts(search);
+            const response = await apiClient.getProducts(search, sortBy, ascending, propertyId);
             setProducts(response.data);
         } catch (error) {
             console.error('Error fetching products:', error);
         }
-    }, [search]);
+    }, [search, sortBy, ascending, propertyId]);
 
     // Fetch customer's order history
     const fetchOrders = useCallback(async () => {
@@ -68,6 +82,7 @@ const CustomersView: React.FC = () => {
             alert('Order placed successfully!');
             setOrderEntries([]);
             await fetchOrders();
+            await fetchProducts(); // Refresh products in case stock changed
         } catch (error) {
             console.error('Error placing order:', error);
         }
@@ -75,27 +90,78 @@ const CustomersView: React.FC = () => {
 
     useEffect(() => {
         const fetchData = async () => {
+            await fetchProperties(); // Fetch properties first
             await fetchProducts();
             await fetchOrders();
         };
         fetchData().catch((error) => {
             console.error('Error in fetchData:', error);
         });
-    }, [fetchProducts, fetchOrders]);
+    }, [fetchProducts, fetchOrders, fetchProperties]);
 
     return (
         <div className="page-container">
             <h1>Customer Page</h1>
 
-            {/* Product Overview with Search */}
+            {/* Product Overview with Search, Sort, and Filter */}
             <h2>Product Overview</h2>
-            <input
-                type="text"
-                placeholder="Search products..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-            />
-            <button onClick={fetchProducts}>Search</button>
+            <div className="controls">
+                {/* Search Input */}
+                <input
+                    type="text"
+                    placeholder="Search products..."
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                />
+                <button onClick={fetchProducts}>Search</button>
+
+                {/* Sort By Dropdown */}
+                <label htmlFor="sortBy">Sort By:</label>
+                <select
+                    id="sortBy"
+                    value={sortBy}
+                    onChange={(e) => setSortBy(e.target.value)}
+                >
+                    <option value="">-- Select --</option>
+                    <option value="name">Name</option>
+                    <option value="price">Price</option>
+                    <option value="stock">Stock</option>
+                </select>
+
+                {/* Sort Order Toggle */}
+                <label htmlFor="ascending">Order:</label>
+                <select
+                    id="ascending"
+                    value={ascending ? 'asc' : 'desc'}
+                    onChange={(e) => setAscending(e.target.value === 'asc')}
+                >
+                    <option value="asc">Ascending</option>
+                    <option value="desc">Descending</option>
+                </select>
+
+                {/* Filter by Property Dropdown */}
+                <label htmlFor="propertyFilter">Filter by Property:</label>
+                <select
+                    id="propertyFilter"
+                    value={propertyId ?? ''}
+                    onChange={(e) => {
+                        const value = e.target.value;
+                        setPropertyId(value ? Number(value) : undefined);
+                    }}
+                >
+                    <option value="">-- All Properties --</option>
+                    {properties.map((prop) => (
+                        <option key={prop.id} value={prop.id}>
+                            {prop.propertyName}
+                        </option>
+                    ))}
+                </select>
+
+                {/* Apply Filters Button */}
+                <button onClick={fetchProducts}>Apply</button>
+            </div>
+
+            {/* Products List */}
             <ul>
                 {products.map((product) => (
                     <li key={product.id}>
@@ -130,7 +196,9 @@ const CustomersView: React.FC = () => {
             <ul>
                 {orders.map((order) => (
                     <li key={order.id}>
-                        <strong>Order #{order.id}</strong> - Total: ${order.totalAmount?.toFixed(2)} - Date:{' '}
+                        <strong>Order #{order.id}</strong>
+                        - Status: {order.status}
+                        - Total: ${order.totalAmount?.toFixed(2)} - Date:{' '}
                         {new Date(order.orderDate).toLocaleString()}
                         <ul>
                             {order.orderEntries?.map((entry) => (

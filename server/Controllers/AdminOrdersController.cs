@@ -33,5 +33,37 @@ namespace server.Controllers
             var orderDtos = _mapper.Map<List<OrderDTO>>(orders);
             return Ok(orderDtos);
         }
+        
+        //Update the status of an order
+        [HttpPut("{id}/status")]
+        public async Task<IActionResult> UpdateOrderStatus(int id, [FromBody] UpdateOrderStatusDTO updateStatusDto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var order = await _context.Orders.FindAsync(id);
+            if (order == null)
+            {
+                return NotFound(new { Message = $"Order with ID {id} not found." });
+            }
+
+            order.Status = updateStatusDto.Status;
+            // Optionally, you can update the DeliveryDate or other related fields here
+
+            try
+            {
+                _context.Orders.Update(order);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                // Log the exception (ex) as needed
+                return StatusCode(500, new { Message = "An error occurred while updating the order status." });
+            }
+
+            return NoContent();
+        }
     }
 }

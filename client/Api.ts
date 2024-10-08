@@ -49,6 +49,11 @@ export interface PropertyDTO {
     propertyName: string;
 }
 
+/** UpdateOrderStatusDTO */
+export interface UpdateOrderStatusDTO {
+    status: string;
+}
+
 /** API class containing methods for each endpoint */
 export class ApiClient {
     private axiosInstance: AxiosInstance;
@@ -129,6 +134,10 @@ export class ApiClient {
     /** Get all orders */
     public async getAllOrders(): Promise<AxiosResponse<OrderDTO[]>> {
         return this.axiosInstance.get<OrderDTO[]>('/admin/AdminOrders');
+    }
+
+    public async updateOrderStatus(id: number, updateStatusDto: UpdateOrderStatusDTO): Promise<AxiosResponse<void>> {
+        return this.axiosInstance.put<void>(`/admin/AdminOrders/${id}/status`, updateStatusDto);
     }
 
     /** PROPERTIES ENDPOINTS */
